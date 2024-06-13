@@ -1,16 +1,16 @@
 package src;
 import java.util.UUID;
 
-public class Character {//
-//    Variable called id of data type string, auto-generated (Private member)
+public abstract class Character {//
+
     private String id;
     private String name;
     private int hp;
     private boolean isAlive;
 
-    public character(String name, int hp) {
+    public Character(String name, int hp) {
         UUID uuid = UUID.randomUUID();
-        this.id = uuid.toString();
+        this.id = uuid.toString().substring(0,6);
         this.name = name;
         this.hp = hp;
         this.isAlive = true;
