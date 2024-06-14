@@ -6,7 +6,6 @@ public class Wizard extends Character{
 
     public Wizard(String name, int hp) {
         super(name, hp);
-        int randomNum = (int)(Math.random() * 50) + 1;  // 1 to 50
     }
 
     public int getMana() {
