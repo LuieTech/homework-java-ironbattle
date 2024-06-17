@@ -18,17 +18,27 @@ public class Warrior extends Character implements Attacker{
     @Override
     public void attack(Character character) {
 
-
-        int warriorAttack = getStrength();
+        int warriorAttack = 0;
         int characterHp = character.getHp();
+
+        if(this.stamina >= 5){
+            warriorAttack = heavyAttack();
+        } else if(this.stamina >= 1) {
+            warriorAttack = weakAttack();
+        } else {
+            setStamina(getStamina() + 2);
+        }
+
         int attackResult = characterHp - warriorAttack;
         character.setHp(attackResult);
     }
 
     public int heavyAttack(){
+        setStamina(getStamina() - 5);
         return getStrength();
     }
     public int weakAttack(){
+        setStamina(getStamina()+1);
         return Math.round((float) getStrength()/2 );
     }
 
@@ -58,6 +68,5 @@ public class Warrior extends Character implements Attacker{
 
         this.strength = (int) (Math.random() * 10 + 1);
     }
-
 
 }
