@@ -3,7 +3,7 @@ import java.util.UUID;
 
 public abstract class Character {//
 
-    private
+
 
     private String id;
     private String name;
