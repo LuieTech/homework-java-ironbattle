@@ -5,14 +5,14 @@ public class Wizard extends Character implements Attacker{
         private int mana;
         private int intelligence;
         private Random random;
-        private int damageDealtbyWiz;
+        private int damageDealtByWiz;
 
     public Wizard(String name) {
         super(name, (int) (Math.random() * 51) + 50);
         this.mana = (int)(Math.random() * 41) + 10;
         this.intelligence = (int)(Math.random() * 50) + 1;
         this.random = new Random();
-        this.damageDealtbyWiz = 0;
+        this.damageDealtByWiz = 0;
         setAlive(true);
 
     }
@@ -36,9 +36,9 @@ public class Wizard extends Character implements Attacker{
     public void castFireball(Character character) {
         System.out.println(getName() + " Cast Fireball");
         mana -= 5;
-        damageDealtbyWiz = intelligence;
+        damageDealtByWiz = intelligence;
         int characterHp = character.getHp();
-        int attackResult = characterHp - damageDealtbyWiz;
+        int attackResult = characterHp - damageDealtByWiz;
         character.setHp(attackResult);
 
         if (character.getHp() <= 0) {
@@ -49,9 +49,9 @@ public class Wizard extends Character implements Attacker{
     public void staffHit(Character character) {
         System.out.println(getName() + " Staff Hit");
         mana += 1;
-        damageDealtbyWiz = 2;
+        damageDealtByWiz = 2;
         int characterHp = character.getHp();
-        int attackResult = characterHp - damageDealtbyWiz;
+        int attackResult = characterHp - damageDealtByWiz;
         character.setHp(attackResult);
 
         if (character.getHp() <= 0) {
@@ -83,10 +83,4 @@ public class Wizard extends Character implements Attacker{
     public void attack(Character character) {
         randomWizardAttack(character);
     }
-
-
-
-
-
-
 }
