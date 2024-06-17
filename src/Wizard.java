@@ -5,6 +5,7 @@ public class Wizard extends Character implements Attacker{
         private int mana;
         private int intelligence;
         private Random random;
+        private int damageDealtbyWiz;
 
     public Wizard(String name, int hp) {
         super(name, (int) (Math.random() * 51) + 50);
@@ -34,11 +35,15 @@ public class Wizard extends Character implements Attacker{
     public void castFireball() {
         System.out.println("Cast Fireball");
         mana -= 5;
+        damageDealtbyWiz = intelligence;
+        // Some code to decrease opponent hp
     }
 
     public void staffHit() {
         System.out.println("Staff hit");
         mana += 1;
+        damageDealtbyWiz = 2;
+        // Some code to decrease opponent hp
     }
 
     public void noManaToAttack() {
