@@ -64,7 +64,8 @@ public class Wizard extends Character implements Attacker{
         mana += 2;
     }
 
-    public void rangdomWizardAttack(Character character) {
+    public void randomWizardAttack(Character character) {
+        // test
         if (mana >= 5) {
             if (random.nextBoolean()) {
                 castFireball(character);
