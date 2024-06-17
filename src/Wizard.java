@@ -34,25 +34,33 @@ public class Wizard extends Character implements Attacker{
     }
 
     public void castFireball(Character character) {
-        System.out.println("Cast Fireball");
+        System.out.println(getName() + " Cast Fireball");
         mana -= 5;
         damageDealtbyWiz = intelligence;
         int characterHp = character.getHp();
         int attackResult = characterHp - damageDealtbyWiz;
         character.setHp(attackResult);
+
+        if (character.getHp() <= 0) {
+            character.setAlive(false);
+        }
     }
 
     public void staffHit(Character character) {
-        System.out.println("Staff hit");
+        System.out.println(getName() + " Staff Hit");
         mana += 1;
         damageDealtbyWiz = 2;
         int characterHp = character.getHp();
         int attackResult = characterHp - damageDealtbyWiz;
         character.setHp(attackResult);
+
+        if (character.getHp() <= 0) {
+            character.setAlive(false);
+        }
     }
 
     public void noManaToAttack(Character character) {
-        System.out.println("No mana left to attack");
+        System.out.println(getName() + "Has no mana left to attack");
         mana += 2;
     }
 

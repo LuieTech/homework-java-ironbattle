@@ -17,8 +17,15 @@ public class Main {
 
         System.out.println("Battle");
 
-        gandalf.attack(sauron);
-        sauron.attack(gandalf);
+        while (gandalf.isAlive() && sauron.isAlive()) {
+            gandalf.attack(sauron);
+            sauron.attack(gandalf);
+        }
+        if (gandalf.isAlive()) {
+            System.out.println("Gandalf wins!");
+        } else {
+            System.out.println("Sauron wins!");
+        }
 
         System.out.println("Check Stats");
 
