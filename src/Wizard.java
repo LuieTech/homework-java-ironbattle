@@ -51,28 +51,28 @@ public class Wizard extends Character implements Attacker{
         character.setHp(attackResult);
     }
 
-    public void noManaToAttack() {
+    public void noManaToAttack(Character character) {
         System.out.println("No mana left to attack");
         mana += 2;
     }
 
-    public void randomWizardAttack() {
+    public void randomWizardAttack(Character character) {
         if (mana >= 5) {
             if (random.nextBoolean()) {
-                castFireball();
+                castFireball(character);
             } else {
-                staffHit();
+                staffHit(character);
             }
         } else if (mana >= 1) {
-                staffHit();
+                staffHit(character);
             } else {
-                noManaToAttack();
+                noManaToAttack(character);
             }
         }
 
     @Override
     public void attack(Character character) {
-        randomWizardAttack();
+        randomWizardAttack(character);
     }
 
 
