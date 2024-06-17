@@ -1,4 +1,4 @@
 package src;
 
-public class Wizard {
+public class Wizard{
 }
