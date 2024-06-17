@@ -12,6 +12,7 @@ public class Wizard extends Character implements Attacker{
         this.mana = (int)(Math.random() * 41) + 10;
         this.intelligence = (int)(Math.random() * 50) + 1;
         this.random = new Random();
+        this.damageDealtbyWiz = 0;
         setAlive(true);
 
     }
@@ -32,18 +33,22 @@ public class Wizard extends Character implements Attacker{
         this.intelligence = intelligence;
     }
 
-    public void castFireball() {
+    public void castFireball(Character character) {
         System.out.println("Cast Fireball");
         mana -= 5;
         damageDealtbyWiz = intelligence;
-        // Some code to decrease opponent hp
+        int characterHp = character.getHp();
+        int attackResult = characterHp - damageDealtbyWiz;
+        character.setHp(attackResult);
     }
 
-    public void staffHit() {
+    public void staffHit(Character character) {
         System.out.println("Staff hit");
         mana += 1;
         damageDealtbyWiz = 2;
-        // Some code to decrease opponent hp
+        int characterHp = character.getHp();
+        int attackResult = characterHp - damageDealtbyWiz;
+        character.setHp(attackResult);
     }
 
     public void noManaToAttack() {
