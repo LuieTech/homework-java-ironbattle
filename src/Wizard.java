@@ -5,13 +5,13 @@ public class Wizard extends Character implements Attacker{
         private int mana;
         private int intelligence;
         private Random random;
-        private int damageDealtByWiz;
 
     public Wizard(String name, int hp) {
-        super(name, hp);
-        this.mana = (int)(Math.random() * 41) + 10;  // 10 to 50;
-        this.intelligence = (int)(Math.random() * 50) + 1;  // 1 to 50
+        super(name, (int) (Math.random() * 51) + 50);
+        this.mana = (int)(Math.random() * 41) + 10;
+        this.intelligence = (int)(Math.random() * 50) + 1;
         this.random = new Random();
+        setAlive(true);
 
     }
 
@@ -52,12 +52,13 @@ public class Wizard extends Character implements Attacker{
                 castFireball();
             } else {
                 staffHit();
-            } else if (mana >= 1) {
+            }
+        } else if (mana >= 1) {
                 staffHit();
             } else {
                 noManaToAttack();
+            }
         }
-    }
 
     @Override
     public void attack(Character character) {
