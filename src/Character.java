@@ -12,10 +12,10 @@ public abstract class Character {//
 
     public Character(String name, int hp) {
         UUID uuid = UUID.randomUUID();
-        this.id = uuid.toString().substring(0,6);
-        this.name = name;
-        this.hp = hp;
-        this.isAlive = true;
+        setId(uuid.toString().substring(0,6));
+        setName(name);
+        setHp(hp);
+        setAlive(true);
 
     }
 
