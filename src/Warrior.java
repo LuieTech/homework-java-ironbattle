@@ -18,17 +18,27 @@ public class Warrior extends Character implements Attacker{
     @Override
     public void attack(Character character) {
 
-
-        int warriorAttack = getStrength();
+        int warriorAttack = 0;
         int characterHp = character.getHp();
+
+        if(this.stamina >= 5){
+            warriorAttack = heavyAttack();
+        } else if(this.stamina >= 1) {
+            warriorAttack = weakAttack();
+        } else {
+            setStamina(getStamina() + 2);
+        }
+
         int attackResult = characterHp - warriorAttack;
         character.setHp(attackResult);
     }
 
     public int heavyAttack(){
+        setStamina(getStamina() - 5);
         return getStrength();
     }
     public int weakAttack(){
+        setStamina(getStamina()+1);
         return Math.round((float) getStrength()/2 );
     }
 
@@ -39,7 +49,12 @@ public class Warrior extends Character implements Attacker{
 
     @Override
     public void setHp(int hp) {
-        this.hp = (int) (Math.random() * 200 + 100);
+        if(hp < 100 || hp > 200){
+            this.hp = (int) (Math.random() * 101 + 100);
+        } else {
+            this.hp = hp;
+        }
+        super.setHp(this.hp);
     }
 
     public int getStamina() {
@@ -47,7 +62,11 @@ public class Warrior extends Character implements Attacker{
     }
 
     public void setStamina(int stamina) {
-        this.stamina = (int) (Math.random() * 50 + 10);
+        if(stamina < 10 || stamina > 50){
+            this.stamina = (int) (Math.random() * 41 + 10);
+        } else {
+            this.stamina = stamina;
+        }
     }
 
     public int getStrength() {
@@ -56,8 +75,19 @@ public class Warrior extends Character implements Attacker{
 
     public void setStrength(int strength) {
 
-        this.strength = (int) (Math.random() * 10 + 1);
+        if(strength < 1 || strength > 10){
+            this.strength = (int) (Math.random() * 10 + 1);
+        } else {
+            this.strength = strength;
+        }
     }
 
-
+    @Override
+    public String toString() {
+        return "Warrior{" +
+                "stamina=" + stamina +
+                ", strength=" + strength +
+                ", hp=" + hp +
+                '}';
+    }
 }
