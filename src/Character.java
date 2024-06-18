@@ -3,8 +3,6 @@ import java.util.UUID;
 
 public abstract class Character {//
 
-
-
     private String id;
     private String name;
     private int hp;
@@ -51,5 +49,7 @@ public abstract class Character {//
     public void setAlive(boolean alive) {
         isAlive = alive;
     }
+
+
 }
 
