@@ -1,7 +1,7 @@
 package src;
 import java.util.UUID;
 
-public abstract class Character {//
+public abstract class Character implements Attacker{//
 
     private String id;
     private String name;
@@ -16,6 +16,8 @@ public abstract class Character {//
         setAlive(true);
 
     }
+
+    public void attack(){}
 
 
     public String getId() {
