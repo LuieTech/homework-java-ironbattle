@@ -7,22 +7,33 @@ import java.util.Scanner;
 public class Main {
 
     public static void startFight(Character char1, Character char2){
-     char1.attack(char2);
-     char2.attack(char1);
-     //TODO: Fighting mechanic
+        while (char1.isAlive() && char2.isAlive()) {
+            char1.attack(char2);
+            char2.attack(char1);
+        }
 
-
+        if (char1.isAlive() && !char2.isAlive()) {
+            System.out.println(char1.getName() + " wins!");
+        } else if (!char1.isAlive() && char2.isAlive()) {
+            System.out.println(char2.getName() + " wins!");
+        } else {
+            System.out.println("It's a tie! Restarting the battle...");
+            char1.setHp(100);
+            char2.setHp(100);
+            startFight(char1, char2);
+        }
     }
+
     public static void main(String[] args) {
         boolean start = true;
         List<Character> chars = new ArrayList<>();
+        Scanner in = new Scanner(System.in);
+
         do {
-            int option;
-            Scanner in = new Scanner(System.in);
             System.out.println("""
                     ***********************************************************************
                      Welcome to the game!
-                    
+
                      Please select an option before you continue!\
 
                      1: Create Wizard
@@ -32,7 +43,7 @@ public class Main {
                      5: Quit Game
                     ************************************************************************""");
 
-            option = in.nextInt();
+            int option = in.nextInt();
             in.nextLine();
             String name;
             switch (option){
@@ -59,7 +70,6 @@ public class Main {
                 case 3:
                     if (chars.size() != 2){
                         System.out.println("\nPlease add more characters before starting the fight!\n");
-
                     } else {
                         startFight(chars.get(0), chars.get(1));
                         chars.clear();
@@ -68,13 +78,10 @@ public class Main {
                 case 4:
                     if (chars.isEmpty()){
                         System.out.println("\nNo characters left to delete.\n");
-                    }
-                    else {
+                    } else {
                         System.out.println("\n" + chars.get(chars.size()-1).getName() + " will be deleted.\n");
                         chars.remove(chars.size()-1);
-
                     }
-
                     break;
                 case 5:
                     start = false;
@@ -84,12 +91,8 @@ public class Main {
                     System.out.println("Missing or Wrong Input please try again.");
                     break;
             }
-
-
-        }
-        while (start);
-
-
+        } while (start);
     }
 }
+
 
